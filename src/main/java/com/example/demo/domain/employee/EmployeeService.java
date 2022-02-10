@@ -19,4 +19,11 @@ public class EmployeeService {
                 .filter(e -> e.equalFirstName("Mary"))
                 .map(Employee::toFindEmployeeDto).collect(Collectors.toList());
     }
+
+    public List<EmployeeDto> findEmployees(String firstName) {
+        List<Employee> employees = employeeRepository.findByFirstName(firstName);
+
+        return employees.stream()
+                .map(Employee::toFindEmployeeDto).collect(Collectors.toList());
+    }
 }
