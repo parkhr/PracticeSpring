@@ -1,8 +1,10 @@
 package com.example.demo.domain.employee;
 
+import com.example.demo.domain.title.Title;
+
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "employees")
@@ -28,12 +30,16 @@ public class Employee {
     @Column(name = "hire_date", nullable = false)
     private LocalDate hireDate;
 
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "empNo")
+    private List<Title> title;
+
     public boolean equalFirstName(String firstName) {
         return this.firstName.equals(firstName);
     }
 
-    public EmployeeDto toFindEmployeeDto() {
-        return EmployeeDto.builder()
+    public EmployeeDto.EmployeeInfoResponse toFindEmployeeDto() {
+        return EmployeeDto.EmployeeInfoResponse.builder()
                 .empNo(this.empNo)
                 .birthDate(this.birthDate)
                 .firstName(this.firstName)

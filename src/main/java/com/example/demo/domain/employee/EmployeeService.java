@@ -12,7 +12,7 @@ public class EmployeeService {
 
     private final EmployeeRepository employeeRepository;
 
-    public List<EmployeeDto> findEmployees() {
+    public List<EmployeeDto.EmployeeInfoResponse> findEmployees() {
         List<Employee> employees = employeeRepository.findAll();
 
         return employees.stream()
@@ -20,7 +20,7 @@ public class EmployeeService {
                 .map(Employee::toFindEmployeeDto).collect(Collectors.toList());
     }
 
-    public List<EmployeeDto> findEmployees(String firstName) {
+    public List<EmployeeDto.EmployeeInfoResponse> findEmployees(String firstName) {
         List<Employee> employees = employeeRepository.findByFirstName(firstName);
 
         return employees.stream()
