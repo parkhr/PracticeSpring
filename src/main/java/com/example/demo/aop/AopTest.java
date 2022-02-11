@@ -13,8 +13,7 @@ import org.springframework.stereotype.Component;
 public class AopTest {
     @Around("@annotation(org.springframework.web.bind.annotation.GetMapping)")
     public Object around(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
-        log.debug("========================aop test ...========================");
-        System.out.println("========================aop test ...========================");
+        log.info("aop test ...");
 
         return proceedingJoinPoint.proceed();
     }

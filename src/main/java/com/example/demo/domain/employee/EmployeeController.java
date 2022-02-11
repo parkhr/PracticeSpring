@@ -3,6 +3,7 @@ package com.example.demo.domain.employee;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -25,8 +26,9 @@ public class EmployeeController {
     }
 
     @GetMapping("/employees/{firstName}")
-    public List<EmployeeDto.EmployeeInfoResponse> firstEmployees(@PathVariable("firstName") String firstName) {
-        return employeeService.findEmployees(firstName);
+    public List<EmployeeDto.EmployeeInfoResponse> firstEmployees(@PathVariable("firstName") String firstName) throws Exception {
+        throw new IllegalAccessException();
+//        return employeeService.findEmployees(firstName);
     }
 
 }
