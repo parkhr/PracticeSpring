@@ -4,13 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 
 public class EmployeeDto {
 
     public static class SaveRequest {
-        //    @NotBlank(message =  "firstName 을 입력해주세요.")
-        //    private String firstName;
+        @NotBlank(message =  "firstName 을 입력해주세요.")
+        private String firstName;
         //
         //    @NotBlank(message =  "lastName 을 입력해주세요.")
         //    private String lastName;

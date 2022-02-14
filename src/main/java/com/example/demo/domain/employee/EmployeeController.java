@@ -42,7 +42,6 @@ public class EmployeeController {
 
     @GetMapping("/employees/{firstName}")
     public List<EmployeeDto.EmployeeInfoResponse> firstEmployees(@PathVariable("firstName") String firstName) throws Exception {
-        throw new RuntimeException("bad request");
-//        return employeeService.findEmployees(firstName);
+        return employeeService.findEmployees(firstName);
     }
 }
