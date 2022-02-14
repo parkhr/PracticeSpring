@@ -1,11 +1,13 @@
 package com.example.demo.domain.employee;
 
 import com.example.demo.domain.title.Title;
+import lombok.Getter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
+@Getter
 @Entity
 @Table(name = "employees")
 public class Employee {
