@@ -1,12 +1,14 @@
 package com.example.demo.domain.employee;
 
+import com.example.demo.common.ResponseBody;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -31,14 +33,16 @@ public class EmployeeController {
     }
 
     @GetMapping("/employees")
-    public List<EmployeeDto.EmployeeInfoResponse> findEmployees() {
-        return employeeService.findEmployees();
+    public ResponseEntity findEmployees() {
+        return ResponseEntity.ok(ResponseBody.builder()
+                                    .code(HttpStatus.OK.value())
+                                    .data(employeeService.findEmployees())
+                                    .build());
     }
 
     @GetMapping("/employees/{firstName}")
     public List<EmployeeDto.EmployeeInfoResponse> firstEmployees(@PathVariable("firstName") String firstName) throws Exception {
-        throw new IllegalAccessException();
+        throw new RuntimeException("bad request");
 //        return employeeService.findEmployees(firstName);
     }
-
 }
