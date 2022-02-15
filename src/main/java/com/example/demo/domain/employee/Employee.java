@@ -40,7 +40,7 @@ public class Employee {
         return this.firstName.equals(firstName);
     }
 
-    public EmployeeDto.EmployeeInfoResponse toFindEmployeeDto() {
+    public EmployeeDto.EmployeeInfoResponse toEmployeeInfoDto() {
         return EmployeeDto.EmployeeInfoResponse.builder()
                 .empNo(this.empNo)
                 .birthDate(this.birthDate)

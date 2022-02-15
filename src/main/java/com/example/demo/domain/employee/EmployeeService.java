@@ -1,5 +1,6 @@
 package com.example.demo.domain.employee;
 
+import io.jsonwebtoken.Jwts;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,13 +18,13 @@ public class EmployeeService {
 
         return employees.stream()
                 .filter(e -> e.equalFirstName("Mary"))
-                .map(Employee::toFindEmployeeDto).collect(Collectors.toList());
+                .map(Employee::toEmployeeInfoDto).collect(Collectors.toList());
     }
 
     public List<EmployeeDto.EmployeeInfoResponse> findEmployees(String firstName) {
         List<Employee> employees = employeeRepository.findByFirstName(firstName);
 
         return employees.stream()
-                .map(Employee::toFindEmployeeDto).collect(Collectors.toList());
+                .map(Employee::toEmployeeInfoDto).collect(Collectors.toList());
     }
 }
